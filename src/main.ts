@@ -12,7 +12,7 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 const app = createApp(App)
 // 使用中文element-plus
 app.use(ElementPlus, {
-    locale: zhCn,
+  locale: zhCn,
 })
 
 // console.log(import.meta.env); // 获取环境变量
