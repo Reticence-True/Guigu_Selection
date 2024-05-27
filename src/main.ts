@@ -10,11 +10,13 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 // svg插件
 import 'virtual:svg-icons-register'
 // 全局组件注册插件
-import GlobalComponents from "@/components/index.ts"
+import GlobalComponents from '@/components/index.ts'
 // 全局样式
-import "@/styles/index.scss"
+import '@/styles/index.scss'
 // 引入路由
 import router from './router'
+import { pinia } from './store'
+// pinia仓库
 
 // 获取app实例
 const app = createApp(App)
@@ -26,6 +28,8 @@ app.use(ElementPlus, {
 app.use(GlobalComponents)
 // 注册路由
 app.use(router)
+// pinia仓库
+app.use(pinia)
 
 // console.log(import.meta.env); // 获取环境变量
 
