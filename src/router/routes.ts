@@ -41,7 +41,7 @@ export const constantRoute = [
       title: '数据大屏',
       isVisiable: true, // 路由所在菜单可见性
       icon: 'Platform',
-    }
+    },
   },
   {
     path: '/acl',

@@ -102,7 +102,9 @@ const login = async () => {
       isLoading.value = true // 开始加载
       await userStore.userLogin(loginForm) // 登录成功
 
-      $router.push({path: $route.query.redirect ? $route.query.redirect : "/"}) // 跳转首页
+      $router.push({
+        path: $route.query.redirect ? $route.query.redirect : '/',
+      }) // 跳转首页
       ElNotification({
         type: 'success',
         message: '欢迎回来',
@@ -126,7 +128,7 @@ const login = async () => {
 </script>
 <script lang="ts">
 export default {
-  name: "Login"
+  name: 'Login',
 }
 </script>
 

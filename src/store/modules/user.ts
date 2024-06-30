@@ -7,7 +7,11 @@ import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from '@/utils/token'
 // 常量路由
 import { constantRoute } from '@/router/routes'
 // 数据类型
-import { loginFormData, loginResponseData, userInfoResponseData } from '@/api/user/type'
+import {
+  loginFormData,
+  loginResponseData,
+  userInfoResponseData,
+} from '@/api/user/type'
 
 // 创建用户小仓库
 export const useUserStore = defineStore('User', () => {
@@ -39,7 +43,7 @@ export const useUserStore = defineStore('User', () => {
   // 获取用户信息
   async function userInfo() {
     // 获取信息
-    let res : userInfoResponseData = await reqUserInfo();
+    let res: userInfoResponseData = await reqUserInfo()
     // 存储信息
     if (res.code === 200) {
       // 获取用户信息
@@ -55,11 +59,11 @@ export const useUserStore = defineStore('User', () => {
   // 退出登录
   async function userLogout() {
     //  发请求
-    let res : any = await reqLogout()
+    let res: any = await reqLogout()
     if (res.code === 200) {
-      this.username = ""
-      this.token = ""
-      this.avatar = ""
+      this.username = ''
+      this.token = ''
+      this.avatar = ''
       REMOVE_TOKEN()
       return 'ok'
     } else {

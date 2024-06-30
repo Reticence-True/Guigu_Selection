@@ -6,7 +6,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { viteMockServe } from 'vite-plugin-mock'
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  const env = loadEnv(mode, process.cwd()); // 获取环境变量信息
+  const env = loadEnv(mode, process.cwd()) // 获取环境变量信息
   return {
     plugins: [
       vue(),
@@ -36,12 +36,10 @@ export default defineConfig(({ command, mode }) => {
       proxy: {
         [env.VITE_APP_BASE_API]: {
           target: env.VITE_SERVE, // 获取数据的服务器的地址
-          changeOrigin: true,  // 是否代理跨域
-          rewrite: (path) => path.replace(/^\/api/, "") // 路径重写
-        }
-      }
-    }
+          changeOrigin: true, // 是否代理跨域
+          rewrite: (path) => path.replace(/^\/api/, ''), // 路径重写
+        },
+      },
+    },
   }
 })
-
-

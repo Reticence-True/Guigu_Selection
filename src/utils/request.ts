@@ -17,7 +17,7 @@ request.interceptors.request.use((config) => {
   // config 存在 headers 属性，用以给请求配置公共参数
   // 返回配置对象，不然连请求都发不出去
   // 携带token
-  const userStore = useUserStore();
+  const userStore = useUserStore()
   config.headers.token = userStore.token
   return config
 })

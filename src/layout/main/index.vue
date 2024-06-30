@@ -3,8 +3,8 @@
     <router-view v-slot="{ Component }">
       <!-- 路由组件出口位置 -->
       <!-- <transition name="fade"> -->
-        <!-- 渲染一级路由的子路由 -->
-        <component :is="Component" v-if="destoryFlag" />
+      <!-- 渲染一级路由的子路由 -->
+      <component :is="Component" v-if="destoryFlag" />
       <!-- </transition> -->
     </router-view>
   </div>
