@@ -28,12 +28,12 @@ export default {
   align-items: center;
   box-shadow: 0 0 2px rgba(0, 0, 0);
 
-  .tabbar_left ::v-deep .breadcrumb {
+  .tabbar_left :deep(.breadcrumb) {
     display: flex;
     margin-left: 20px;
   }
 
-  .tabbar_right ::v-deep .setting {
+  .tabbar_right :deep(.setting) {
     display: flex;
   }
 }

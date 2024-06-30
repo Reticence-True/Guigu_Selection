@@ -49,13 +49,15 @@ import { ref, reactive } from 'vue'
 // 仓库
 import { useUserStore } from '@/store/modules/user'
 // 路由器
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 // elNotification
 import { ElNotification } from 'element-plus'
 import { GET_TIME } from '@/utils/time'
 
 // 路由器
-let $route = useRouter()
+let $router = useRouter()
+// 路由
+let $route = useRoute()
 // 获取el-form元素
 let loginElForm = ref()
 // 收集对象密码
@@ -99,7 +101,8 @@ const login = async () => {
     try {
       isLoading.value = true // 开始加载
       await userStore.userLogin(loginForm) // 登录成功
-      $route.push('/') // 跳转首页
+
+      $router.push({path: $route.query.redirect ? $route.query.redirect : "/"}) // 跳转首页
       ElNotification({
         type: 'success',
         message: '欢迎回来',
@@ -119,6 +122,11 @@ const login = async () => {
       message: '账号或密码格式不正确',
     })
   }
+}
+</script>
+<script lang="ts">
+export default {
+  name: "Login"
 }
 </script>
 

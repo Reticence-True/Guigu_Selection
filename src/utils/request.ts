@@ -1,6 +1,8 @@
 // 二次封装的axios
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+// 用户仓库
+import { useUserStore } from '@/store/modules/user'
 
 // 创建axios实例
 const request = axios.create({
@@ -14,6 +16,9 @@ const request = axios.create({
 request.interceptors.request.use((config) => {
   // config 存在 headers 属性，用以给请求配置公共参数
   // 返回配置对象，不然连请求都发不出去
+  // 携带token
+  const userStore = useUserStore();
+  config.headers.token = userStore.token
   return config
 })
 // 响应拦截器

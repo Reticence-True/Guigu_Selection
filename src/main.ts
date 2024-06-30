@@ -15,8 +15,10 @@ import GlobalComponents from '@/components/index.ts'
 import '@/styles/index.scss'
 // 引入路由
 import router from './router'
-import { pinia } from './store'
 // pinia仓库
+import { pinia } from './store'
+// 路由守卫
+import './permission'
 
 // 获取app实例
 const app = createApp(App)
