@@ -1,7 +1,7 @@
 // 路由鉴权
 import router from '@/router'
 // 进度条插件
-// @ts-ignore
+// @ts-expect-error Element进度条
 import nprogress from 'nprogress'
 // 进度条杨树
 import 'nprogress/nprogress.css'
@@ -22,7 +22,7 @@ const userStore = useUserStore(pinia)
  * @param {any} from 从哪个路由而来
  * @param {any} next 路由放行函数
  */
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _from, next) => {
   // 进度条业务
   nprogress.start()
   // 修改页面
@@ -45,8 +45,10 @@ router.beforeEach(async (to, from, next) => {
         // 没有
         // 发请求获取用户信息后放行
         try {
+          // 刷新异步路由：由于是使用addRoute动态添加的，而刷新会导致异步路由重置
+          // 解决办法：在获取一次用户信息，添加上异步路由
           await userStore.userInfo() // 获取用户信息成功
-          next() // 放行
+          next({ ...to, replace: true }) // 放行
         } catch (e) {
           // token 过期 | 用户手动修改本地存储 token
           console.error('ERROR: ', e)
@@ -67,7 +69,7 @@ router.beforeEach(async (to, from, next) => {
 })
 
 // 全局后置守卫
-router.afterEach((to, from) => {
+router.afterEach(() => {
   // 进度条业务
   nprogress.done()
 })

@@ -27,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import useLayoutSettingStore from '@/store/modules/setting'
 import { useRoute } from 'vue-router'
 

@@ -12,7 +12,39 @@
       circle
       @click="fullScreen"
     ></el-button>
-    <el-button size="small" icon="Setting" circle></el-button>
+    <el-popover
+      placement="bottom"
+      title="主题设置"
+      :width="300"
+      trigger="hover"
+    >
+      <template #default>
+        <el-form>
+          <el-form-item label="主题颜色">
+            <el-color-picker
+              v-model="color"
+              show-alpha
+              size="default"
+              @change="setThemeColor(color)"
+              :teleported="false"
+            />
+          </el-form-item>
+          <el-form-item label="暗黑模式">
+            <el-switch
+              v-model="dark"
+              size="default"
+              active-icon="Moon"
+              inactive-icon="Sunny"
+              inline-prompt
+              @change="changeDark"
+            />
+          </el-form-item>
+        </el-form>
+      </template>
+      <template #reference>
+        <el-button size="small" icon="Setting" circle></el-button>
+      </template>
+    </el-popover>
     <img
       :src="userStore.avatar"
       alt=""
@@ -36,7 +68,7 @@
 
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import useLayoutSettingStore from '@/store/modules/setting'
 import { useUserStore } from '@/store/modules/user'
 
@@ -44,6 +76,12 @@ const layoutSettingStore = useLayoutSettingStore()
 const userStore = useUserStore()
 const $router = useRouter()
 const $route = useRoute()
+
+// 收集开关数据
+let dark = ref<boolean>(false)
+
+// 颜色
+let color = ref()
 
 // 刷新按钮
 const updateRefresh = () => {
@@ -72,6 +110,18 @@ const logout = async () => {
   await userStore.userLogout()
   // 跳转到登录页面
   $router.push({ path: '/login', query: { redirect: $route.path } })
+}
+
+// 切换暗黑模式
+const changeDark = (val: boolean) => {
+  let html = document.documentElement
+  html.className = val ? 'dark' : ''
+}
+
+// 设置主题颜色
+const setThemeColor = (curColor: string) => {
+  let html = document.documentElement
+  html.style.setProperty('--el-color-primary', curColor)
 }
 </script>
 <script lang="ts">

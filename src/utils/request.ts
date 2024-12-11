@@ -8,7 +8,7 @@ import { useUserStore } from '@/store/modules/user'
 const request = axios.create({
   // 配置基础路径
   baseURL: import.meta.env.VITE_APP_BASE_API, // 使用环境配置中的默认路径
-  timeout: 5000, // 超时时间
+  timeout: 500000, // 超时时间
 })
 
 // 添加拦截器
@@ -32,7 +32,7 @@ request.interceptors.response.use(
     // 失败的回调，处理http网络错误
     // 存储网络错误信息
     let msg = ''
-    let status = error.response.status
+    const status = error.response ? error.response.status : 0
 
     switch (status) {
       case 401:

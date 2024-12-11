@@ -82,7 +82,7 @@ const loginRules = {
  * @param {any} value  表单元素文本内容
  * @param {any} callback 校验规则后的回调函数
  */
-function validatePwd(rule: any, value: any, callback: any) {
+function validatePwd(_rule: any, value: any, callback: any) {
   if (/^\d{5,}$/.test(value)) {
     callback() // 放行
   } else {
@@ -103,7 +103,7 @@ const login = async () => {
       await userStore.userLogin(loginForm) // 登录成功
 
       $router.push({
-        path: $route.query.redirect ? $route.query.redirect : '/',
+        path: $route.query.redirect ? ($route.query.redirect as string) : '/',
       }) // 跳转首页
       ElNotification({
         type: 'success',

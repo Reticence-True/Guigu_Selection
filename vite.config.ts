@@ -34,6 +34,16 @@ export default defineConfig(({ command, mode }) => {
     // 代理跨域
     server: {
       proxy: {
+        // '/api/admin/product': {
+        //   target: "http://39.98.123.211:8510",
+        //   changeOrigin: true, // 是否代理跨域
+        //   rewrite: (path) => path.replace(/^\/api/, ''), // 路径重写
+        // },
+        // '/api/admin/spu': {
+        //   target: "http://39.98.123.211:8510",
+        //   changeOrigin: true, // 是否代理跨域
+        //   rewrite: (path) => path.replace(/^\/api/, ''), // 路径重写
+        // },
         [env.VITE_APP_BASE_API]: {
           target: env.VITE_SERVE, // 获取数据的服务器的地址
           changeOrigin: true, // 是否代理跨域

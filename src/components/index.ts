@@ -2,9 +2,10 @@
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import SvgIcon from './SvgIcon/index.vue'
+import Category from './Category/index.vue'
 
 // 自定义插件
-const GloComponents = { SvgIcon }
+const GloComponents = { SvgIcon, Category }
 
 export default {
   install(app: any) {

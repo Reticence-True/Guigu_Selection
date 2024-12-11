@@ -1,7 +1,7 @@
 // 时间判断：返回此时时间段
 export const GET_TIME = () => {
   const date = new Date()
-  let hour = date.getHours()
+  const hour = date.getHours()
   if (hour >= 5 && hour < 10) {
     return '早上好'
   } else if (hour >= 10 && hour < 14) {

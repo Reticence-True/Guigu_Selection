@@ -44,6 +44,20 @@ export const constantRoute = [
     },
   },
   {
+    path: '/404',
+    component: () => import('@/views/404/index.vue'),
+    name: '404',
+    meta: {
+      title: '404',
+      isVisiable: false, // 路由所在菜单可见性
+      icon: '',
+    },
+  },
+]
+
+// 异步路由
+export const asyncRoute = [
+  {
     path: '/acl',
     component: () => import('@/layout/index.vue'),
     name: 'Acl',
@@ -57,7 +71,7 @@ export const constantRoute = [
       {
         path: '/acl/user',
         component: () => import('@/views/acl/user/index.vue'),
-        name: 'Acl',
+        name: 'User',
         meta: {
           title: '用户管理',
           isVisiable: true, // 路由所在菜单可见性
@@ -122,7 +136,7 @@ export const constantRoute = [
         component: () => import('@/views/product/spu/index.vue'),
         name: 'Spu',
         meta: {
-          title: 'Spu管理',
+          title: 'SPU管理',
           isVisiable: true, // 路由所在菜单可见性
           icon: 'Calendar',
         },
@@ -132,24 +146,17 @@ export const constantRoute = [
         component: () => import('@/views/product/sku/index.vue'),
         name: 'Sku',
         meta: {
-          title: 'Sku管理',
+          title: 'SKU管理',
           isVisiable: true, // 路由所在菜单可见性
           icon: 'Orange',
         },
       },
     ],
   },
+]
 
-  {
-    path: '/404',
-    component: () => import('@/views/404/index.vue'),
-    name: '404',
-    meta: {
-      title: '404',
-      isVisiable: false, // 路由所在菜单可见性
-      icon: '',
-    },
-  },
+// 任意路由
+export const anyRoute = [
   {
     path: '/:pathMatch(.*)*',
     redirect: '/404',

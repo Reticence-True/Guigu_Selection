@@ -1,5 +1,5 @@
 <template>
-  <template v-for="(r, i) in menuList" :key="r.path">
+  <template v-for="r in menuList" :key="r.path">
     <!-- 没有子路由 -->
     <el-menu-item
       v-if="!r.children && r.meta.isVisiable"
